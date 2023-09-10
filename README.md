@@ -218,3 +218,53 @@ This line uses the echo command to display the message "Enter name of file to de
 <br>
 `rm -i $file` <br>
 This line uses the rm command to attempt to remove (delete) the file specified by the value stored in the $file variable. The -i option stands for "interactive," and it prompts the user for confirmation before actually removing the file. If the user types 'y' (yes), the file is deleted; if the user types 'n' (no), the file is not deleted.
+
+## Command Substitution
+
+**Using backtick(``)**
+```bash
+#!/bin/bash
+LIST=`ls`
+echo "$LIST"
+```
+<blockquote>
+Output: <br>
+bash.pdf <br>
+bash.ppt <br>
+Lab-02.pdf <br>
+lab2shellScripting.txt <br>
+OS Lab 1.pdf <br>
+test2.sh <br>
+test.sh <br>
+</blockquote>
+
+```bash
+#!/bin/bash
+PS1="`pwd`>"
+echo $PS1
+```
+<blockquote>
+Output: <br>
+/home/sami/00 3-2>
+</blockquote>
+In the command:
+
+```bash
+PS1="`pwd`>"
+```
+
+You are configuring the `PS1` (Prompt String 1) environment variable in a Bash shell. This variable controls the format and appearance of your command prompt in the shell.
+
+Here's an explanation of the command step by step:
+
+1. `PS1=`: This part of the command sets the `PS1` environment variable, which determines the primary prompt string for your shell.
+
+2. "`pwd`": Inside the double backticks (`` ` ``), you have a command substitution. The `pwd` command stands for "print working directory," and it is used to display the current directory path.
+
+3. `>`: This is a character (>) that is included as part of the prompt string.
+
+When you set `PS1` to "`pwd`>", it means your shell prompt will display the current working directory followed by a greater-than sign (`>`). This is a common way to customize your shell prompt to show you the current directory in your command line.
+
+So, when you run the command and see `/home/userid/work> _`, it means that you are in the `/home/userid/work` directory, and the `>` character is part of your customized prompt. The underscore (_) represents the cursor position where you can start typing your commands.
+
+Customizing the `PS1` variable allows you to personalize your shell prompt to display information that you find useful while working in the shell.
