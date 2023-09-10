@@ -6,7 +6,7 @@
 - [Data Types:](#Data_Types)
 - [\ is the bash escape character](#\_is_the_bash_escape_character)
 - [Single and Double Quote](#Single_and_Double_Quote)
-- Read command(#Read_command)
+- [Read command](#Read_command)
 - [Command Substitution](#Command_Substitution)
 - [Arithmetic Evaluation](#Arithmetic_Evaluation)
 
