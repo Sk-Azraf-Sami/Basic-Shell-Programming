@@ -3,13 +3,14 @@
 ## Table of Contents: 
 - [Comments](#Comments)
 - [Shebang Line](#Shebang-Line)
-- [Data Types](#Data_Types)
-- [\ is the bash escape character](#is_the_bash_escape_character)
-- [Single and Double Quote](#Single_and_Double_Quote)
-- [Read command](#Read_command)
-- [Command Substitution](#Command_Substitution)
-- [Arithmetic Evaluation](#Arithmetic_Evaluation)
+- [Data Types](#Data-Types)
+- [\ is the bash escape character](#is-the-bash-escape-character)
+- [Single and Double Quote](#Single-and-Double-Quote)
+- [Read command](#Read-command)
+- [Command Substitution](#Command-Substitution)
+- [Arithmetic Evaluation](#Arithmetic-Evaluation)
 
+  
 ## [Comments:](#Comments)
 
 **Single-Line Comments (Using `#`):**
@@ -102,7 +103,7 @@ Here are a few key points about the shebang line:
 
 In summary, while a shebang line is not strictly required, it is strongly recommended to include one at the beginning of your shell script to ensure proper interpretation and execution, enhance portability, and make it clear which interpreter the script should use.
 
-## [Data Types:](#Data_Types) 
+## [Data Types](#Data-Types)
 Shell programming typically deals with a limited set of data types, primarily because the shell itself is designed for managing and manipulating text and running system commands. Here are some of the common data types used in shell programming with examples:
 
 1. **String**: Shell scripts frequently work with strings, which are sequences of characters.
@@ -165,7 +166,7 @@ Shell programming typically deals with a limited set of data types, primarily be
 
 These are the most common data types used in shell scripting. Keep in mind that shell scripting languages like Bash are loosely typed, meaning variables can change types, and operations often depend on context. For example, a variable that held a string can be modified to hold an integer without explicit type declarations. However, understanding and adhering to data type conventions can lead to more readable and maintainable code in shell scripts.
 
-## [\ is the bash escape character](#is_the_bash_escape_character)
+## [\ is the bash escape character](#is-the-bash-escape-character)
 ```bash
 $ ls
 bash.pdf   bash.ppt  'CSE 3128 - Lab1 Lab1_ Introduction to Swift.pptx'   Lab-02.pdf   lab2shellScripting.txt  'OS Lab 1.pdf'   test.sh  '*try.txt'
@@ -180,7 +181,7 @@ When I mentioned "escape the asterisk in the filename," I was referring to situa
 In shell scripting, some characters, such as *, have special meanings and are used as wildcard characters for pattern matching. If you have a file with a special character like * in its name and you want to treat that character as a literal part of the filename (i.e., you don't want the shell to interpret it as a wildcard), you can "escape" it. Escaping means that you use a special character or sequence of characters to tell the shell to treat the following character as a regular character and not as a special character with its usual meaning.
 In this case, the backslash tells the shell to treat the * as a regular character and not as a wildcard. This allows you to work with files that have special characters in their names without having those characters interpreted as something else.
 
-## [Single and Double Quote](#Single_and_Double_Quote)
+## [Single and Double Quote](#Single-and-Double-Quote)
 
 **Using double quotes to show a string of characters will allow any variables in the quotes to be resolved**
 ```bash
@@ -200,8 +201,7 @@ $ echo $newvar
 Value of var is $var
 ```
 
-## [Read command](#Read_command)
-
+## [Read command](#Read-command)
 ```bash
 #!/bin/bash
 roll_number=115
@@ -228,7 +228,7 @@ This line uses the echo command to display the message "Enter name of file to de
 `rm -i $file` <br>
 This line uses the rm command to attempt to remove (delete) the file specified by the value stored in the $file variable. The -i option stands for "interactive," and it prompts the user for confirmation before actually removing the file. If the user types 'y' (yes), the file is deleted; if the user types 'n' (no), the file is not deleted.
 
-## [Command Substitution](#Command_Substitution)
+## [Command Substitution](#Command-Substitution)
 
 **Using backtick(``)**
 ```bash
@@ -286,7 +286,7 @@ echo $LIST
 ```
 > Output: bash.pdf bash.ppt Lab-02.pdf lab2shellScripting.txt OS Lab 1.pdf test2.sh test.sh
 
-## [Arithmetic Evaluation](#Arithmetic_Evaluation)
+## [Arithmetic Evaluation](#Arithmetic-Evaluation)
 
 **Using let**
 
