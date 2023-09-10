@@ -2,7 +2,7 @@
 
 ## Table of Contents: 
 - [Comments](#Comments)
-- [#!/bin/bash](#bin)
+- [#!/bin/bash](#shebang)
 - [Data Types:](#Data_Types)
 - [\ is the bash escape character](#is_the_bash_escape_character)
 - [Single and Double Quote](#Single_and_Double_Quote)
@@ -83,7 +83,7 @@ Explanation:
 
 Using `<<` for multi-line comments can be a more readable and structured way to add comments to your code when compared to the `:` and single quotes approach. However, it's important to note that this is still not a standard feature of shell scripting, but it's a widely used convention for creating multi-line comments.
 
-## [#!/bin/bash](#bin)
+## [#!/bin/bash](#shebang)
 The line `#!/bin/bash` is called a shebang, also known as a hashbang or pound-bang. It is not required for a shell script to run, but it serves an important purpose.
 
 The shebang is used to specify the interpreter that should be used to execute the script. In this case, `#!/bin/bash` indicates that the script should be interpreted and executed using the Bash shell.
