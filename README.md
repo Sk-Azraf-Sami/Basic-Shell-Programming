@@ -1,7 +1,7 @@
 # Basic-Shell-Programming
 
 ## Table of Contents: 
-- [Comments:](#Comments)
+- [Comments](#Comments)
 - [#!/bin/bash](#bin)
 - [Data Types:](#Data_Types)
 - [\ is the bash escape character](#\_is_the_bash_escape_character)
@@ -200,7 +200,7 @@ $ echo $newvar
 Value of var is $var
 ```
 
-## Read command(#Read_command)
+## [Read command](#Read_command)
 
 ```bash
 #!/bin/bash
