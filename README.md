@@ -4,7 +4,7 @@
 - [Comments](#Comments)
 - [#!/bin/bash](#bin)
 - [Data Types:](#Data_Types)
-- [\ is the bash escape character](#\_is_the_bash_escape_character)
+- [\ is the bash escape character](#is_the_bash_escape_character)
 - [Single and Double Quote](#Single_and_Double_Quote)
 - [Read command](#Read_command)
 - [Command Substitution](#Command_Substitution)
@@ -165,7 +165,7 @@ Shell programming typically deals with a limited set of data types, primarily be
 
 These are the most common data types used in shell scripting. Keep in mind that shell scripting languages like Bash are loosely typed, meaning variables can change types, and operations often depend on context. For example, a variable that held a string can be modified to hold an integer without explicit type declarations. However, understanding and adhering to data type conventions can lead to more readable and maintainable code in shell scripts.
 
-## [\ is the bash escape character](#\_is_the_bash_escape_character)
+## [\ is the bash escape character](#is_the_bash_escape_character)
 ```bash
 $ ls
 bash.pdf   bash.ppt  'CSE 3128 - Lab1 Lab1_ Introduction to Swift.pptx'   Lab-02.pdf   lab2shellScripting.txt  'OS Lab 1.pdf'   test.sh  '*try.txt'
