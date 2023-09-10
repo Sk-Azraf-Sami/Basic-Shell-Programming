@@ -289,4 +289,66 @@ echo $LIST
 ## [Arithmetic Evaluation](#Arithmetic-Evaluation)
 
 **Using let**
+```bash
+#!/bin/bash
+let X=2*4+5
+echo $X
 
+let Y=10*X-6 
+echo $Y 
+```
+**Using $ [expression] or $((expression))**
+```bash
+#!/bin/bash
+echo “$((123+20))”
+
+VALORE=$[123+20]
+echo “$[123*$VALORE]”
+```
+## Conditional Statements
+- Need to have spaces around [ and ] when using them as part of conditional <br>
+  statements like if. (keep space like this ==> if`space`[`space`"$var1" = "$var2"`space`] )
+- Enclosing the variables $name and $USER in double quotes to handle cases where they might contain spaces or special characters.
+
+```bash
+#!/bin/bash
+echo -n "Enter your name:"
+read name
+
+USER="sami"
+ADMIN="admin"
+
+if [ "$name" = "$USER" ]
+then
+	echo "Hello, $name, you are a general user"
+	
+elif [ "$name" = "$ADMIN" ]
+then
+	echo "You are a ADMIN"
+	
+else
+	echo "Username is wrong"
+fi 	
+```
+<br>
+
+**Nested Condition**
+```bash
+#!/bin/bash
+
+echo -n "Enter your age: "
+read age
+
+if [ "$age" -ge 18 ]; then
+    echo "You are an adult."
+
+    if [ "$age" -ge 21 ]; then
+        echo "You are also eligible to vote and purchase alcohol."
+    else
+        echo "You are eligible to vote but not eligible to purchase alcohol."
+    fi
+
+else
+    echo "You are not an adult."
+fi
+```
