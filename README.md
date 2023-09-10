@@ -190,3 +190,31 @@ $ echo $newvar
 
 Value of var is $var
 ```
+
+## Read command
+
+```bash
+#!/bin/bash
+roll_number=115
+student_name="Azraf Sami"
+echo "My roll is $roll_number"
+echo "My name is $student_name"
+
+read user_input
+echo "You entered => $user_input"
+```
+**Another Example**
+> This will delete specific file.
+```bash
+#!/bin/bash
+echo -n "Enter the file name to delete:"
+read file 
+echo "Type 'y' to confirm, 'n' to cancel"
+rm -i $file
+echo "That was your decision!"  
+```
+`echo -n "Enter the file name to delete:"`<br>
+This line uses the echo command to display the message "Enter name of file to delete: " to the terminal. The -n option is used to suppress the newline character, so the cursor remains on the same line, allowing the user to input text on the same line as the prompt.
+<br>
+`rm -i $file` <br>
+This line uses the rm command to attempt to remove (delete) the file specified by the value stored in the $file variable. The -i option stands for "interactive," and it prompts the user for confirmation before actually removing the file. If the user types 'y' (yes), the file is deleted; if the user types 'n' (no), the file is not deleted.
