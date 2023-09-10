@@ -170,3 +170,23 @@ $ ls '*try.txt' # Using single quotes to preserve the literal value of *
 When I mentioned "escape the asterisk in the filename," I was referring to situations where a filename contains a special character like an asterisk (*).
 In shell scripting, some characters, such as *, have special meanings and are used as wildcard characters for pattern matching. If you have a file with a special character like * in its name and you want to treat that character as a literal part of the filename (i.e., you don't want the shell to interpret it as a wildcard), you can "escape" it. Escaping means that you use a special character or sequence of characters to tell the shell to treat the following character as a regular character and not as a special character with its usual meaning.
 In this case, the backslash tells the shell to treat the * as a regular character and not as a wildcard. This allows you to work with files that have special characters in their names without having those characters interpreted as something else.
+
+## Single and Double Quote
+
+**Using double quotes to show a string of characters will allow any variables in the quotes to be resolved**
+```bash
+$ var=“test string”
+$ newvar=“Value of var is $var”
+$ echo $newvar
+
+Value of var is test string
+```
+
+**Using single quotes to show a string of characters will not allow variable resolution**
+```bash
+$ var=’test string’
+$ newvar=’Value of var is $var’
+$ echo $newvar
+
+Value of var is $var
+```
