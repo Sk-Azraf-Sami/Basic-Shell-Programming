@@ -166,6 +166,56 @@ Shell programming typically deals with a limited set of data types, primarily be
 
 These are the most common data types used in shell scripting. Keep in mind that shell scripting languages like Bash are loosely typed, meaning variables can change types, and operations often depend on context. For example, a variable that held a string can be modified to hold an integer without explicit type declarations. However, understanding and adhering to data type conventions can lead to more readable and maintainable code in shell scripts.
 
+## Where I use $ for variable and where not? 
+In Bash scripting, you use the `$` symbol to reference the value of a variable. However, there are specific cases where you use `$` and other cases where you don't. Here's a general guideline:
+
+1. **Referencing Variable Values**: When you want to access the value of a variable, you prepend the variable name with `$`. For example:
+   
+   ```bash
+   variable_name="Hello"
+   echo $variable_name
+   ```
+
+   In this example, `$variable_name` is used to access the value "Hello" stored in the variable.
+
+2. **Assigning Values to Variables**: When you assign a value to a variable, you don't use `$` on the left side of the assignment. For example:
+
+   ```bash
+   variable_name="World"
+   ```
+
+   Here, `variable_name` is assigned the value "World" without using `$`.
+
+3. **Mathematical Operations**: When performing mathematical operations with variables, you use `$` to access the variable values. For example:
+
+   ```bash
+   num1=5
+   num2=3
+   sum=$((num1 + num2))
+   ```
+
+   Here, `$num1` and `$num2` are used to access the values of the variables for addition.
+
+4. **Command Substitution**: When you want to capture the output of a command and store it in a variable, you use `$()` for command substitution. For example:
+
+   ```bash
+   current_date=$(date)
+   ```
+
+   Here, `$(date)` is used to execute the `date` command and capture its output in the `current_date` variable.
+
+5. **String Manipulation**: When you want to concatenate strings or perform other string operations, you use `$` to reference the variable values. For example:
+
+   ```bash
+   first_name="John"
+   last_name="Doe"
+   full_name="$first_name $last_name"
+   ```
+
+   Here, `$first_name` and `$last_name` are used to concatenate the strings into `full_name`.
+
+In summary, you use `$` to reference variable values, whether you're accessing, manipulating, or assigning values to variables. The `$` symbol indicates to Bash that you are working with the contents of a variable. However, you don't use `$` when declaring or assigning values to variables.
+
 ## [\ is the bash escape character](#is-the-bash-escape-character)
 ```bash
 $ ls
@@ -500,4 +550,60 @@ case $num in
 	   echo "$num is a invalid input";;
 esac
 ```
+## Iteration Statements
+
+### Using For Structure 
+
+```bash
+#!/bin/bash
+sum=0
+for num in 1 2 3 4 5 
+	do
+	  sum=$[$sum + $num] 
+	done
+echo $sum
+```
+<br> 
+
+**Another Example:**
+```bash
+#!/bin/bash
+for name in Sk. Azraf Sami
+	do 
+	   echo "My name is $name"
+	   sleep 1
+	 done
+```
+<br> 
+
+> If the list part is left off, var is set to each parameter passed to the script ( $1, $2, $3,…)
+```bash
+#!/bin/bash
+for var
+	do 
+	   echo "The value of variable 'var' is $var"
+	   sleep 1
+	 done
+# $ chmod +x test.sh
+# $ ./test.sh arg1 arg2
+
+# Output:
+# The value of variable 'var' is arg1
+# The value of variable 'var' is arg2
+
+```
+### C-like for loop
+```bash
+#!/bin/bash
+echo -n "Enter a number:"
+read num
+sum=0
+for((i=1 ; $i <= $num ; i=$i+1))
+	do
+	  sum=$[$sum+$i]
+	done
+echo "The sum of the first $num is: $sum"
+```
+### While Statements
+
 
