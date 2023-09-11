@@ -427,7 +427,77 @@ elif [ "$age" -ge 65 ] || [ "$age" -lt 18 ]; then
 else
     echo "Invalid age input."
 fi
-
 ```
+## Case Statement
 
+```bash
+#!/bin/bash
+
+echo "Choose an option:"
+echo "1. Say Hello"
+echo "2. Say Goodbye"
+echo "3. Say Something else"
+echo "4. Quit"
+
+read choice
+
+case $choice in
+    1)
+        echo "Hello!"
+        ;;
+    2)
+        echo "Goodbye!"
+        ;;
+    3)
+        echo "Something else."
+        ;;
+    4)
+        echo "Quitting..."
+        exit 0
+        ;;
+    *)
+        echo "Invalid choice."
+        ;;
+esac
+```
+<br>
+
+> Find Even or Odd number
+```bash
+#!/bin/bash
+echo -n "Enter a number:"
+read num
+remainder=$[$num % 2]
+
+case $remainder in 
+	0) 
+           echo "$num is even number";;
+        1)
+           echo "$num is odd number";;
+        *) 
+           echo "$num is invalid input";;   
+ esac 
+```
+<br> 
+
+> Using "if" and "case" together
+
+```bash
+#!/bin/bash
+echo -n "Enter a number:"
+read num
+
+case $num in 
+	[0-9]* )
+	    if [ $[$num % 2] -eq 0 ]
+	    then
+	    	echo "$num is a even number" 
+	    else
+	    	echo "$num is a odd number"
+	    fi;;
+	
+	*) 
+	   echo "$num is a invalid input";;
+esac
+```
 
