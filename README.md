@@ -606,4 +606,20 @@ echo "The sum of the first $num is: $sum"
 ```
 ### While Statements
 
+```bash
+#!/bin/bash
+echo -n "Enter a number:"
+read num
 
+sum=0
+i=1
+
+while [ $i -le $num ]
+	do 
+	  sum=$[$sum+$i]
+	  i=$[$i+1]
+	done
+
+echo "The sum of the first $num is: $sum"
+
+```
