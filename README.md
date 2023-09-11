@@ -352,6 +352,45 @@ else
     echo "You are not an adult."
 fi
 ```
+<br>
+
+**Another Example**
+> Checking if file directory exits or not
+```bash
+#!/bin/bash 
+echo -n "Enter the path:"
+read folderPATH 
+
+if cd $folderPATH
+then
+	echo "Path is $folderPATH and it contains " ;ls
+
+else
+	echo "The directory $folderPATH is not exist"
+	exit 1
+
+fi
+```
+**********************************************
+
+```bash
+#!/bin/bash
+echo -n "Enter Folder Path:"
+read folderPATH
+if [ -d "$folderPATH" ]
+then 
+	echo "$folderPATH is exist and it contains"
+	ls "$folderPATH"
+else
+	echo "Folder directory is not exist" 
+	exit 1 
+fi 
+```
+Don't use `PATH` as variable name because it will generate error. Instead of using `PATH` as variable name, I use `folderPATH` as variable name. <br>
+
+The `exit 1` statement in the Bash script you provided is used to indicate an error condition and to exit the script with a non-zero exit status. <br>
+In Bash and many other programming languages, it is a common practice to use non-zero exit statuses (typically 1 or higher) to indicate that something went wrong or that an error occurred during script execution. By convention, a script with a non-zero exit status suggests that an error condition was encountered.
+
 ## Logical operators
 > ! => negate (NOT) a logical expression <br>
 > -a => logically AND two logical expressions <br>
