@@ -352,3 +352,43 @@ else
     echo "You are not an adult."
 fi
 ```
+## Logical operators
+> ! => negate (NOT) a logical expression <br>
+> -a => logically AND two logical expressions <br>
+> -o => logically OR two logical expressions <br>
+
+```bash
+#!/bin/bash
+
+echo -n "Enter your age: "
+read age
+
+if [ "$age" -ge 18 -a "$age" -lt 65 ]; then
+    echo "You are of working age."
+elif [ "$age" -ge 65 -o "$age" -lt 18 ]; then
+    echo "You are either a senior or a minor."
+else
+    echo "Invalid age input."
+fi
+```
+
+> && => logically AND two logical expressions <br>
+> || => logically OR two logical expressions
+
+```bash
+#!/bin/bash
+
+echo -n "Enter your age: "
+read age
+
+if [ "$age" -ge 18 ] && [ "$age" -lt 65 ]; then
+    echo "You are of working age."
+elif [ "$age" -ge 65 ] || [ "$age" -lt 18 ]; then
+    echo "You are either a senior or a minor."
+else
+    echo "Invalid age input."
+fi
+
+```
+
+
