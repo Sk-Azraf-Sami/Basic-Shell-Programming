@@ -632,5 +632,6 @@ while [ $i -le $num ]
 	done
 
 echo "The sum of the first $num is: $sum"
-
 ```
+## Continue Statements
+
