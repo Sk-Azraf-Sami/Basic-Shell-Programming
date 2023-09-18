@@ -355,6 +355,17 @@ echo “$((123+20))”
 VALORE=$[123+20]
 echo “$[123*$VALORE]”
 ```
+
+## Expressions
+> -d => check if path given is a directory <br>
+> -f => check if path given is a file <br>
+> -e => check if file name exists <br>
+> -r => check if read permission is set for file or directory <br>
+> -s => check if a file has a length greater than 0 <br>
+> -w => check if write permission is set for a file or directory <br>
+> -x => check if execute permission is set for a file or directory <br> 
+
+
 ## Conditional Statements
 - Need to have spaces around [ and ] when using them as part of conditional <br>
   statements like if. (keep space like this ==> if`space`[`space`"$var1" = "$var2"`space`] )
