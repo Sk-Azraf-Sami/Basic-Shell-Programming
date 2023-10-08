@@ -758,7 +758,12 @@ else
     exit 1
 fi
 ```
+## Practice More Problems: 
+ - HackerRank: https://www.hackerrank.com/domains/shell <br>
 
+## More Tutorials: 
+https://www.geeksforgeeks.org/linux-tutorial/ <br> 
+https://www.tutorialspoint.com/unix/index.htm <br> 
 
 ## Real Life Problems: 
 
