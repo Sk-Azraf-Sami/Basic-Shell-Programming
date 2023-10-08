@@ -634,4 +634,227 @@ while [ $i -le $num ]
 echo "The sum of the first $num is: $sum"
 ```
 ## Continue Statements
+## Unix / Linux - Special Variables 
+Important link: https://www.tutorialspoint.com/unix/unix-special-variables.htm <br> 
+
+**Example-1**
+```bash
+#!/bin/sh 
+
+# Comment 1: Check if no command line arguments were provided.
+if [ $# -eq 0 ]
+then
+    echo "Usage: $0 ordinary_file"
+    exit 1
+fi
+
+# Comment 2: Check if more than one command line argument was provided.
+if [ $# -gt 1 ]
+then
+    echo "Usage: $0 ordinary_file"
+    exit 1
+fi
+
+# Comment 3: Check if the provided argument is a regular file.
+if [ -f "$1" ]
+then
+    filename="$1"
+    set `ls -il $filename`
+    inode="$1"
+    size="$6"
+    echo "Name\t| Inode\t| Size"
+    echo
+    echo "$filename\t| $inode\t| $size"
+    exit 0
+else
+    echo "$0: argument must be an ordinary file"
+    exit 1
+fi
+```
+Run this shell: 
+```bash
+$ chmod +x demo_1  # Make the script executable
+$ ./demo_1 sample.txt
+```
+Output: 
+```bash
+Name    | Inode  | Size
+
+sample.txt  | <inode_number> | <file_size>
+```
+
+The `ls -li` command is used to list information about files and directories in a directory. Here's what each part of the command means:
+
+- `ls`: This is the command to list files and directories.
+- `-l`: This is an option for `ls`, which stands for "long format." When used with `-l`, `ls` provides detailed information about files and directories, including permissions, ownership, size, modification date, and more.
+- `-i`: This is another option for `ls`, which stands for "inode." When used with `-i`, `ls` displays the inode number of each file or directory. The inode number uniquely identifies a file or directory on a filesystem.
+
+So, `ls -li` combines these two options to list files and directories in long format (`-l`) and display their inode numbers (`-i`).
+
+To get a list of the meanings of positional parameters in a shell script, you can use the `set` command without any arguments. Here's how you can do it:
+
+```bash
+#!/bin/bash
+
+# Output the positional parameters
+echo "Positional Parameters:"
+echo "\$1: $1"
+echo "\$2: $2"
+echo "\$3: $3"
+# ... and so on for other positional parameters
+
+# Use the set command to list all positional parameters
+echo "All Positional Parameters:"
+set
+```
+
+In this script, `$1`, `$2`, `$3`, and so on represent the individual positional parameters, and the `set` command without arguments lists all positional parameters. When you run the script with arguments, you'll see their values in the output. <br> 
+
+**Example-2**
+<br>
+change the code of Example-1 <br>
+• Change1：When the input parameter represent directory, list the directory’s name, inode, size and owner. The result of directory has the same result as file. <br>
+• Change2：Show what the parameter represents, file or directory. <br> 
+```bash
+#!/bin/sh 
+
+if [ $# -eq 0 ]
+then
+    echo "Usage: $0 ordinary_file_or_directory"
+    exit 1
+fi
+
+# Check if the provided argument is a regular file or directory.
+if [ -e "$1" ]
+then
+    target="$1"
+    if [ -f "$target" ]
+    then
+        # It's a regular file.
+        echo "It's a regular file"
+        set `ls -il $target`
+        inode="$1"
+        size="$6"
+        echo "Name\t| Inode\t| Size"
+        echo
+        echo "$target\t| $inode\t| $size"
+    elif [ -d "$target" ]
+    then
+        # It's a directory.
+        echo "It's directory"
+        set `ls -il $target`
+        inode="$1"
+        size="$6"
+        owner="$3"
+        echo "Name\t| Inode\t| Size\t| Owner"
+        echo
+        echo "$target\t| $inode\t| $size\t| $owner"
+    else
+        echo "$0: argument must be an ordinary file or directory"
+        exit 1
+    fi
+else
+    echo "$0: argument does not exist"
+    exit 1
+fi
+```
+
+
+## Real Life Problems: 
+
+**Move same extension files from one folder to another folder**
+```bash
+#!/bin/bash
+
+source_folder="/home/sami/Downloads"
+destination_folder="/home/sami/Downloads/00mhtml"
+
+if [ ! -d $source_folder ]; then 
+   echo "Source folder does not exist!" 
+   exit 1 
+fi 
+
+if [ ! -d $destination_folder ]; then 
+   mkdir -p $destination_folder
+fi
+
+sudo mv "$source_folder"/*.mhtml "$destination_folder/"
+
+if [ $? -eq 0 ]; then 
+   echo "All files are moved from $source_folder to $destination_folder"
+
+else 
+   echo "No mhtml file found in the $source_folder"
+
+fi 
+```
+
+In shell scripting, `$?` is a special variable that stores the exit status of the last executed command. It typically holds an integer value, where `0` usually indicates success or that the previous command completed without errors, and a non-zero value indicates some kind of error or failure.
+
+So, when you see `$? -eq 0`, it's a conditional statement that checks if the exit status of the previous command is equal to `0`. If it is, it means the previous command executed successfully, and the condition evaluates to true. If the exit status is not `0`, it means there was an error or failure, and the condition evaluates to false.
+
+Here's a breakdown:
+
+- `$?`: Represents the exit status of the last command.
+- `-eq`: This is a comparison operator that checks if two values are equal.
+- `0`: The value to which the exit status is compared.
+
+So, `$? -eq 0` essentially means "check if the exit status of the last command is equal to 0," which is a common way to verify if a command completed successfully in a shell script.
+
+⚠️  Some of my mhtml files not move to 00mhtml and they are not exist in source folder either. Where they are gone? <br> 
+
+In your script, you are using the `sudo mv` command to move all files with the `.mhtml` extension from the source folder to the destination folder. However, some of the files might not have been moved for the following reasons:
+
+1. **Permissions:** If some files in the source folder do not have read permissions for the user running the script, the `sudo mv` command won't be able to read and move those files.
+
+2. **File Names:** It's possible that some files in the source folder have special characters or file names that are not supported by the `mv` command. These files might not be moved as expected.
+
+3. **Errors in Source Folder:** There could be errors in the source folder path or the source folder might not contain the expected `.mhtml` files.
+
+To troubleshoot this issue, you can do the following:
+
+1. **Check Permissions:** Verify the permissions of the files in the source folder. You can use the `ls -l` command to list the files and their permissions. Ensure that the user running the script has read permissions for all the `.mhtml` files.
+
+   ```bash
+   ls -l /home/sami/Downloads/*.mhtml
+   ```
+
+2. **Check File Names:** Check if any of the files in the source folder have special characters or file names that could cause issues with the `mv` command.
+
+3. **Check Source Folder Contents:** Verify that the source folder indeed contains the `.mhtml` files you expect to move. You can use the `ls` command without any filters to list all files in the folder.
+
+   ```bash
+   ls /home/sami/Downloads
+   ```
+
+4. **Error Handling:** Modify your script to include better error handling and reporting. For example, you can use `rsync` or `cp` instead of `mv` to copy the files and then remove them from the source folder only if the copy was successful. This way, you can avoid losing files.
+
+Here's an example of how you can modify your script using `rsync`:
+
+```bash
+#!/bin/bash
+
+source_folder="/home/sami/Downloads"
+destination_folder="/home/sami/Downloads/00mhtml"
+
+if [ ! -d "$source_folder" ]; then 
+   echo "Source folder does not exist!" 
+   exit 1 
+fi 
+
+if [ ! -d "$destination_folder" ]; then 
+   mkdir -p "$destination_folder"
+fi
+
+rsync -a --remove-source-files "$source_folder"/*.mhtml "$destination_folder/"
+
+if [ $? -eq 0 ]; then 
+   echo "All files are moved from $source_folder to $destination_folder"
+else 
+   echo "No mhtml file found in the $source_folder"
+fi
+```
+
+This modified script uses `rsync` with the `--remove-source-files` option to copy and remove files only if the copy operation was successful. This helps prevent the loss of files during the move operation.
+
 
